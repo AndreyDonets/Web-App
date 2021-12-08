@@ -54,6 +54,8 @@ namespace PL.Controllers
         {
             if (!ModelState.IsValid)
             {
+                var cities = Mapper.Map<IEnumerable<CityDTO>, List<CityViewModel>>(cityService.GetAll());
+                ViewBag.CityId = new SelectList(cities, "Id", "Name");
                 return View(model);
             }
 
